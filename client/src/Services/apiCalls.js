@@ -9,12 +9,3 @@ export function getMovieList(keyword) {
     )}&page=1&include_adult=false`
   );
 }
-
-export function getSpotifyUserId(token) {
-  const options = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  return ApiHelpers.fetchRequest('https://api.spotify.com/v1/me', options);
-}
