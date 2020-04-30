@@ -17,9 +17,6 @@ function MovieList({ movies }) {
             />
           ))}
       </div>
-      <p className="no-movies">
-        No more movies, if your movie is not in the list try another search
-      </p>
     </div>
   );
 }
