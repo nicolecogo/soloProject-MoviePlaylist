@@ -15,7 +15,6 @@ function Logins() {
   const loginAgain = () => dispatch(setSpotifyToken(''));
   useEffect(() => {
     const queryStr = window.location.search;
-    console.log('Logins -> queryStr', queryStr);
     const token = new URLSearchParams(queryStr).get('token');
     const user = new URLSearchParams(queryStr).get('user');
     console.log(token);
@@ -27,9 +26,13 @@ function Logins() {
 
   return (
     <div className="Logins">
-      {!auth.spotifyToken && <Button href={loginURL}>Spotify Log In</Button>}
+      {!auth.spotifyToken && (
+        <Button variant="success" href={loginURL}>
+          Spotify Log In
+        </Button>
+      )}
       {auth.spotifyToken && (
-        <Button variant="primary" onClick={loginAgain}>
+        <Button variant="success" onClick={loginAgain}>
           Logout
         </Button>
       )}
