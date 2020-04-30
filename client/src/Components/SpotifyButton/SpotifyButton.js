@@ -2,8 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SpotifyApi from '../../Services/SpotifyApi';
 import { toast } from 'react-toastify';
-import Logins from '../Logins/Logins';
 import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import 'react-toastify/dist/ReactToastify.css';
 import './SpotifyButton.css';
 
@@ -25,23 +26,38 @@ function SpotifyButton({ title, songs }) {
     await notify();
   };
 
+  function renderTooltip(props) {
+    return (
+      <Tooltip id="button-tooltip" {...props}>
+        Simple tooltip
+      </Tooltip>
+    );
+  }
+
   return (
     auth.spotifyToken
-    ? <div>
+    ? 
+      <Button className="spotifyButton"
+      onClick={magicHappening}
+      variant="outline-primary"
+      >
+        {' '}
+        Import playlist on Spotify
+      </Button>
+    : <OverlayTrigger
+        placement="right"
+        delay={{ show: 250, hide: 400 }}
+        overlay={renderTooltip}
+      >
         <Button className="spotifyButton"
-        onClick={magicHappening}
-        variant="outline-primary"
-        >
+          onClick={magicHappening}
+          variant="outline-primary"
+          disabled
+          >
           {' '}
-          Import playlist <br /> on Spotify
+          Login to import playlist on Spotify
         </Button>
-      </div>
-    : <Logins />
-      // <button
-      //   className="spotifyButton" onClick={() => {alert('Login Required!');}}>
-      //   {' '}
-      //   Login to your Spotify <br /> account.
-      // </button>
+      </OverlayTrigger>
   );
 }
 
