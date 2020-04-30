@@ -70,11 +70,6 @@ exports[`Movie component should match snapshot (when there are movies) 1`] = `
       </div>
     </div>
   </div>
-  <p
-    className="no-movies"
-  >
-    No more movies, if your movie is not in the list try another search
-  </p>
 </div>
 `;
 
@@ -83,10 +78,5 @@ exports[`Movie component should match snapshot (when there are no movies) 1`] = 
   <div
     className="movies"
   />
-  <p
-    className="no-movies"
-  >
-    No more movies, if your movie is not in the list try another search
-  </p>
 </div>
 `;

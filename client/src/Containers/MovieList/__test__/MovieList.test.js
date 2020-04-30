@@ -28,12 +28,6 @@ describe('Movie component', () => {
       <Movies movies={movies}/>
     , div);
   });
-  it('renders a footer message', () => {
-    const component = render(
-      <Movies movies={movies}/>
-    );
-    expect(component.getByText(/No more movies/i)).toBeInTheDocument();
-  });
   it('renders each movie occurence as a SingleMovie component', async () => {
     const { container } = await render(
       <Movies movies={movies}/>
