@@ -12,19 +12,19 @@ function ListOfSongs({ title }) {
   const auth = useSelector((state) => state.authentication);
 
   useEffect(() => {
-    SpotifyApi.searchAlbum(title, auth.spotifyToken)
-    .then(songs => {
-      if (songs.length > 0) {
-        setSongs(songs);
-        setSongsLoaded(true);
-      } else {
-        getSongList(title)
+    getSongList(title)
         .then((songs) => {
-          setSongs(songs);
-          setSongsLoaded(true);
+          if (songs.length > 0) {
+            setSongs(songs);
+            setSongsLoaded(true);
+          } else {
+            SpotifyApi.searchAlbum(title, auth.spotifyToken)
+            .then(songs => {
+              setSongs(songs);
+              setSongsLoaded(true);
+            });
+          }
         });
-      }
-    });
   }, [title]);
 
   return (
